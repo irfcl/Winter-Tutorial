@@ -41,7 +41,7 @@ private:
     // Read message content and assign it to
     // corresponding tf variables
     t.header.stamp = this->get_clock()->now();
-    t.header.frame_id = "world";
+    t.header.frame_id = "map";
     t.child_frame_id = turtlename_.c_str();
 
     // Turtle only exists in 2D, thus we get x and y translation
