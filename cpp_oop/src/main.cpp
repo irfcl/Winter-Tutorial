@@ -9,16 +9,16 @@ int main() {
     cout << "===== C++ OOP Tutorial =====" << endl;
     cout << "Topics: Header/Source files, enum, extern, OOP" << endl << endl;
 
-    // ===== Topic 4: extern 全域變數 =====
+    // to see the initialization of extern global variable
     cout << "Global vehicle count: " << global_vehicle_count << endl;
 
-    // ===== Topic 3: enum 使用 =====
+    // enum simple usage
     Color my_color = Color::RED;
     if (my_color == Color::RED) {
-        cout << "Color is RED!" << endl;
+        cout << "my Color is RED!" << endl;
     }
 
-    // ===== OOP: Polymorphism =====
+    // OOP demo
     Car* v1 = new Car(100, 180, 5, Color::RED);
     Airplane* v2 = new Airplane(300, 900, 1000, Color::BLUE);
     // 也可以用smart pointer
