@@ -15,7 +15,7 @@ services:
     network_mode: host
     working_dir: /home/user/ros_tutorial
     environment:
-      - DISPLAY=$DISPLAY
+      - DISPLAY=host.docker.internal:0.0
       - XAUTHORITY=/root/.Xauthority
       - ROS_WS=/home/user/ros_tutorial/ros2_ws
     volumes:
