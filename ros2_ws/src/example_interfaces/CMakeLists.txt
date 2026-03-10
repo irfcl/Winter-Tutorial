@@ -15,6 +15,8 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(example_interfaces
     "srv/AddTwoInts.srv"
+    "action/Fibonacci.action"
+    "action/Counter.action"
     DEPENDENCIES geometry_msgs action_msgs std_msgs builtin_interfaces
 )
 
