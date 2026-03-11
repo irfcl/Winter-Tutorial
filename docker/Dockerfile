@@ -22,10 +22,12 @@ RUN apt-get update && apt-get install -y \
     git \
     tree \
     net-tools \
+    usbutils \
     tmux \
     vim \
     wget \
     python3-pip \
+    ros-humble-rqt-tf-tree \
     bash-completion
 
 RUN echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc \ 
@@ -36,7 +38,7 @@ RUN apt-get update && apt-get dist-upgrade -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/*
 
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
 ENV TERM=xterm-256color
 
 USER $USERNAME
