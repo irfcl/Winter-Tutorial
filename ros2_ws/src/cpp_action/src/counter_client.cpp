@@ -4,6 +4,11 @@ void CounterActionClient::send_goal()
 {
     this->timer_->cancel();
 
+    auto message = std_msgs::msg::Int32();
+    message.data = 100000;
+    RCLCPP_INFO(this->get_logger(), "Publishing: %d", message.data);
+    publisher_->publish(message);
+
     if (!this->action_client_->wait_for_action_server()) {
         RCLCPP_ERROR(this->get_logger(), "Action server not available after waiting");
         rclcpp::shutdown();

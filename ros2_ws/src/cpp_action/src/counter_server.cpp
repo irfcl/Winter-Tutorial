@@ -19,7 +19,7 @@ void CounterActionServer::handle_accepted(const std::shared_ptr
     <rclcpp_action::ServerGoalHandle
     <example_interfaces::action::Counter>> goal_handle) {
     using namespace std::placeholders;
-    rclcpp::Rate loop_rate(1);
+    rclcpp::Rate loop_rate(100);
     const auto goal = goal_handle->get_goal();
     auto feedback = std::make_shared<example_interfaces::action::Counter::Feedback>();
     auto result = std::make_shared<example_interfaces::action::Counter::Result>();

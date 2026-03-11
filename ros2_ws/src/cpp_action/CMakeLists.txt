@@ -22,7 +22,18 @@ add_executable(integrated_node
   src/main.cpp
 )
 
+add_executable(integrated_node_1
+  src/counter_client.cpp
+  src/counter_server.cpp
+  src/main1.cpp
+)
+
 target_include_directories(integrated_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+target_include_directories(integrated_node_1 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
@@ -34,13 +45,26 @@ ament_target_dependencies(integrated_node
   std_msgs
 )
 
+ament_target_dependencies(integrated_node_1
+  rclcpp
+  rclcpp_action
+  example_interfaces
+  std_msgs
+)
+
 add_executable(thread_example src/thread_example.cpp)
 find_package(Threads REQUIRED)
 target_link_libraries(thread_example Threads::Threads)
 
+add_executable(thread_example_1 src/thread_example_1.cpp)
+find_package(Threads REQUIRED)
+target_link_libraries(thread_example_1 Threads::Threads)
+
 install(TARGETS
   integrated_node
   thread_example
+  integrated_node_1
+  thread_example_1
   DESTINATION lib/${PROJECT_NAME}
 )
 

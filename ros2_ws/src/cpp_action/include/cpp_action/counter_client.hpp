@@ -13,6 +13,7 @@ public:
     : Node("example_action_client", options) {
         this->action_client_ = rclcpp_action::create_client<example_interfaces::action::Counter>(
         this, "count_to");
+        publisher_ = this->create_publisher<std_msgs::msg::Int32>("target_num", 10);
 
         this->timer_ = this->create_wall_timer(
         std::chrono::milliseconds(500),
@@ -22,6 +23,7 @@ public:
     void send_goal();
 
 private:
+    rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr publisher_;
     rclcpp_action::Client<example_interfaces::action::Counter>::SharedPtr action_client_;
     rclcpp::TimerBase::SharedPtr timer_;
 
