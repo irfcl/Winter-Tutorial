@@ -14,10 +14,9 @@ public:
     }
 
     void run() {
-        for (int i = 0; i < 4; ++i) {
-            workers_.emplace_back(&MultiThreadedTimer::worker_task, this, i * 1ms);
-        }
+        workers_.emplace_back(&MultiThreadedTimer::worker_task, this, 0ms);
     }
+
     ~MultiThreadedTimer() {
         stop();
     }
@@ -48,7 +47,7 @@ private:
 
     // tackle Race Condition
     void safe_print(long long ms) {
-        // std::lock_guard<std::mutex> lock(print_mtx_);
+        std::lock_guard<std::mutex> lock(print_mtx_);
         std::cout << "[Thread " << std::this_thread::get_id() << "] Elapsed: " 
                   << ms << " ms" << std::endl;
     }
